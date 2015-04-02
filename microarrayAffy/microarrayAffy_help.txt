@@ -1,0 +1,22 @@
+Description:
+  Analyze Affymetrix microarray data with one factor
+
+Usage:
+  microarrayAffy.sh [Options] sample_dir
+
+Options:
+  -h|--help                           Help message.
+  -d|--outdir OUTDIR                  Outdir. Default: '.'.
+  -s|--samplecol SAMPLECOL            The column name of the sample file names. Default:FileName
+  -p|--phenocol PHENOCOL              The column name of the phenotypes. Default:Phenotype
+  -S|--sampletable SAMPLETABLE        Sample table file
+  -o|--outname OUTNAME                Explicitly specify the output file name.
+
+Example:
+  microarrayAffy.sh -S sample.txt /path/to/sample/dir
+
+Date:
+  2015/03/27
+
+Author:
+  Zhengyu Guo <zhengyuguo@tamu.edu>
