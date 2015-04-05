@@ -1,8 +1,8 @@
 Description:
-  Analyze Affymetrix microarray data with one factor
+  Analyze Agilent microarray data with one factor
 
 Usage:
-  microarrayAffy.sh [Options] sample_dir
+  microarrayAgilent.sh [Options] sample_dir
 
 Options:
   -h|--help                           Help message.
@@ -13,7 +13,7 @@ Options:
   -o|--outname OUTNAME                Explicitly specify the output file name.
 
 Example:
-  microarrayAffy.sh -S sample.txt /path/to/sample/dir
+  microarrayAgilent.sh -S sample.txt /path/to/sample/dir
 
 Date:
   2015/03/27
