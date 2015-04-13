@@ -18,5 +18,6 @@ Example:
 Date:
   2015/03/27
 
-Author:
+Authors:
+  Osama
   Zhengyu Guo <zhengyuguo@tamu.edu>
