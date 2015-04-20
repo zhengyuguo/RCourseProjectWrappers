@@ -10,6 +10,11 @@ ab=ReadAffy(filenames=rownames(phenoData), celfile.path=data_dir,phenoData=pheno
 
 eset=rma(ab,verbose=F)
 
+ID=featureNames(eset)
+Symbol=getSYMBOL(ID, annotation)
+fData(eset)=data.frame(Symbol=Symbol)
+
+
 condition_factor=factor(pData(eset)[,phenocol])
 design=model.matrix(~condition_factor)
 colnames(design)=c(levels(condition_factor)[1],paste(levels(condition_factor),collapse='vs'))

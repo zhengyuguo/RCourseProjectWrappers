@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 . getoptheader.sh hd:r:s:z: help,outdir:,drugsig:,symbol_col:,zthr: "$@"
+
 outdir=.
 symbol_col=pr_gene_symbol
 zthr=2
@@ -56,7 +57,8 @@ zthr=$zthr
 source('$script_absdir/R/$script_name.R')
 EOF
 } 
+
 if [ $# -ne 0 ]
 then
-  cmd "$1"
+  cmd "$1" 
 fi

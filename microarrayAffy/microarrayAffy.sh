@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. getoptheader.sh hd:s:p:S:o: help,outdir:,samplecol:,phenocol:,sampletable:,outname: "$@"
+. getoptheader.sh ha:d:s:p:S:o: help,annotation,outdir:,samplecol:,phenocol:,sampletable:,outname: "$@"
 
 outdir=.
 samplecol=FileName
@@ -12,24 +12,28 @@ do
       cat "$script_absdir/${script_name}_help.txt"
       exit
       ;;
+    -a|--annotation)
+      annotation=$2
+      shift 2
+      ;;
     -d|--outdir)
-      outdir="$2"
+      outdir=$2
       shift 2
       ;;
     -s|--samplecol)
-      samplecol="$2"
+      samplecol=$2
       shift 2
       ;;
     -p|--phenocol)
-      phenocol="$2"
+      phenocol=$2
       shift 2
       ;;
     -S|--sampletable)
-      sampletable="$2"
+      sampletable=$2
       shift 2
       ;;
     -o|--outname)
-      outname="$2"
+      outname=$2
       shift 2
       ;;
     --)
@@ -45,8 +49,9 @@ done
 
 . die.sh
 [ "$sampletable" -a -f "$sampletable" ] || die "$script_name.sh:Error:Sample table must be specified!" 
+[  "$annotation" ] || die "$script_name.sh:Error:annotation package name must be specified!"
 
-Rpkavail.sh pytools limma affy -c "$script_name.sh" || exit $?
+Rpkavail.sh pytools limma affy "$annotation" -c "$script_name.sh" || exit $?
 
 function cmd {
 local indir="$1"
@@ -67,6 +72,9 @@ data_dir='$indir'
 outfile='$outdir/$obname'
 samplecol='$samplecol'
 phenocol='$phenocol'
+annotation='$annotation'
+suppressPackageStartupMessages(library(annotate))
+suppressPackageStartupMessages(library($annotation))
 source('$script_absdir/R/$script_name.R')
 EOF
 }
