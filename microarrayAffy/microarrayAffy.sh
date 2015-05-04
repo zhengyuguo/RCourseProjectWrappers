@@ -64,15 +64,16 @@ then
 else
   local bname=$(basename "$indir")
 fi
-local obname=$(subsuffix.sh "$bname" -x "$outsuffix.rds")
+local obname=$(subsuffix.sh "$bname" -x "$outsuffix")
 
 Rcmd.sh <<EOF
 sampletable='$sampletable'
 data_dir='$indir'
-outfile='$outdir/$obname'
+outall='$outdir/$obname.txt'
 samplecol='$samplecol'
 phenocol='$phenocol'
 annotation='$annotation'
+outsig='$outdir/${obname}_sig.txt'
 suppressPackageStartupMessages(library(annotate))
 suppressPackageStartupMessages(library($annotation))
 source('$script_absdir/R/$script_name.R')

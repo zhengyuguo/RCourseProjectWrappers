@@ -1,0 +1,22 @@
+Description:
+  Compare the disease signature with the drug signature using gCMAP wilcox score.
+
+Usage:
+  sigCmpWilcox.sh [Options] DISEASE_SIG
+
+Options:
+  -h|--help                           Help message.
+  -d|--outdir OUTDIR                  Outdir. Default: '.'.
+  -r|--drug_sig DRUG_SIG              Drug signature.
+  -s|--symbol_col SYMBOL_COL          The symbol column name.
+  -z|--zthr ZTHR                      Z score threshold. Default: 2
+
+Example:
+  sigCmpWilcox.sh -r drug_signaure.txt disease_signature.txt
+
+Date:
+  2015/04/10
+
+Authors:
+  Yue Gan
+  Zhengyu Guo <zhengyuguo@tamu.edu>

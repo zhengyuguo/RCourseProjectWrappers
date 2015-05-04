@@ -22,4 +22,17 @@ fit=lmFit(eset, design)
 fit=eBayes(fit)
 rowN=dim(eset)[1]
 tab=topTable(fit,adjust.method='BH',coef=2,p.value=1,n=rowN)
-saveRDS(tab,file=outfile)
+sig=subset(tab,P.Value<0.05,select=c('Symbol','t'))
+sig=do.call(
+  rbind,lapply(
+    split(sig, sig$Symbol)
+    , function(x) { 
+      n=which.max(abs(x$t))
+      x[n,]
+    }
+    )
+  )
+rownames(sig)=sig$Symbol
+sig$Symbol=NULL
+write.tsv(tab,file=outall,row.names=T)
+write.tsv(sig,file=outsig,row.names=T)
